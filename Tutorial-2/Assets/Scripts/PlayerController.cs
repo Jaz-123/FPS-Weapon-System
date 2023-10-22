@@ -5,6 +5,7 @@ public class PlayerController : MonoBehaviour
     [Header("Movement Properties")] 
     public float movementSpeed = 70f;
     public float groundDrag = 5f;
+    public float airDrag = 2f;
     public float jumpForce = 12f;
     public float jumpCooldown = 0.25f;
     public float airMultiplier = 0.4f;
@@ -83,7 +84,7 @@ public class PlayerController : MonoBehaviour
     private void HandleDrag()
     {
         //If the player is grounded, set the drag levels to the groundDrag value otherwise set to 0
-        _playerRigidbody.drag = _isGrounded ? groundDrag : 0f;
+        _playerRigidbody.drag = _isGrounded ? groundDrag : airDrag;
     }
 
     private void SpeedControl()

@@ -2,8 +2,13 @@ using UnityEngine;
 public class GunSystem : MonoBehaviour
 {
     [Header("Weapon Stats")]
-    public float timeBetweenShooting, spread, range, reloadTime, timeBetweenShots;
-    public int magazineSize, bulletsPerTap;
+    public float timeBetweenShooting;
+    public float spread;
+    public float range;
+    public float reloadTime;
+    public float timeBetweenShots;
+    public int magazineSize;
+    public int bulletsPerTap;
     public bool allowButtonHold;
     private int _bulletsLeft, _bulletsShot;
 

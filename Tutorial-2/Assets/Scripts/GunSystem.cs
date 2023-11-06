@@ -37,7 +37,7 @@ public class GunSystem : MonoBehaviour
 
         if (Input.GetKeyDown(KeyCode.R) && _bulletsLeft < magazineSize && !_reloading) Reload();
 
-        //Shoot
+        //Shooting mechanics
         if (_readyToShoot && _shooting && !_reloading && _bulletsLeft > 0){
             _bulletsShot = bulletsPerTap;
             Shoot();

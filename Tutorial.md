@@ -92,4 +92,50 @@ In this function we are using an alternate if statement to check wether or not t
 
 Next we check if the player presses the R key to reload, we call the `Reload()` function if the player presses the key and the current amount of bullets is less than the size of the magazine and is also not already reloading.
 
-The last statement checks if the player is allowed to shoot and if the `_shooting` variable is true as well as if we are not reloading and have bullets left in the magazine.
+The last statement checks if the player is allowed to shoot and if the `_shooting` variable is true as well as if we are not reloading and have bullets left in the magazine. If true,  we call the `Shoot()` function.
+
+### Shoot Function
+
+```.cs
+    private void Shoot()
+    {
+        _readyToShoot = false;
+
+        //Spread
+        float x = Random.Range(-spread, spread);
+        float y = Random.Range(-spread, spread);
+
+        //Calculate Direction with Spread
+        Vector3 direction = fpsCam.transform.forward + new Vector3(x, y, 0);
+
+        //RayCast
+        if (Physics.Raycast(fpsCam.transform.position, direction, out _rayHit, range, whatIsEnemy))
+        {
+            Debug.Log(_rayHit.collider.name);
+        }
+        
+        _bulletsLeft--;
+        _bulletsShot--;
+
+        Invoke(nameof(ResetShot), timeBetweenShooting);
+
+        if(_bulletsShot > 0 && _bulletsLeft > 0)
+            Invoke(nameof(Shoot), timeBetweenShots);
+    }
+```
+
+In this shoot function we have to set the `_readyToShoot` variable to false so we cannot shoot while we are already shooting.
+
+Next we generate 2 random numbers to act as the `x` and `y` values for the spread of the bullet, we then apply this to a `direction` variable which uses the camera forward transfrom and applies the spread.
+
+Next we use a raycast to shoot out a ray using the `direction` variable out of the front of the camera with the given range and layer mask.
+
+If we hit something in range with the enemy layer mask, for now all we do is output the name of the object that was hit into the console.
+
+Now we have to reduce the amount of bullets in the magazine and call the `ResetShot()` function.
+
+If we have given a value for more than 1 bullet to be shot with each click, we then call the `Shoot()` function again.
+
+### Reset Shot Function
+
+

@@ -171,6 +171,6 @@ In the `Reload()` function we set `_reloading` to true and call the `ReloadFinis
 
 Here we reset or current ammo to the capactity of the magazine and then set our `_reloading` variable to false as the reload has finished.
 
-## Finish set up in Unity
+## 3. Finish set up in Unity
 
 Now go back to unity and apply the script to your gun object and set the values to your choosing, make sure to set the layer mask to the enemy layer and the camera to the camera refrence and press play and you are done.

@@ -56,6 +56,36 @@ The last variables we need are private for the purposes of the script:
     }
 ```
 
-In the awake function we need to set the amount of bullets that we currently have equal to the capacity of the magazine so we can start with the right amount of ammo.
+In the awake function we need to set the `_bulletsLeft` equal to the `magazineSize` so we can start with the right amount of ammo.
 
 We also need to set our `_readyToShoot` variable to true so we can be able to shoot.
+
+### Update Function
+
+```.cs
+    private void Update()
+    {
+        MyInput();
+    }
+```
+
+In the update function we are only calling the input function as all of the logic is happening in there.
+
+### Input Function
+
+```.cs
+    private void MyInput()
+    {
+        _shooting = allowButtonHold ? Input.GetKey(KeyCode.Mouse0) : Input.GetKeyDown(KeyCode.Mouse0);
+
+        if (Input.GetKeyDown(KeyCode.R) && _bulletsLeft < magazineSize && !_reloading) Reload();
+
+        //Shooting mechanics
+        if (_readyToShoot && _shooting && !_reloading && _bulletsLeft > 0){
+            _bulletsShot = bulletsPerTap;
+            Shoot();
+        }
+    }
+```
+
+

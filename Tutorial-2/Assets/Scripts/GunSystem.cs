@@ -14,7 +14,6 @@ public class GunSystem : MonoBehaviour
 
     [Header("References")]
     public Camera fpsCam;
-    public Transform attackPoint;
     public LayerMask whatIsEnemy;
     
     private RaycastHit _rayHit;

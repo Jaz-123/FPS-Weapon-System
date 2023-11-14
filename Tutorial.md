@@ -25,3 +25,14 @@ In this script we need to create the variales to control the properties of the g
     public bool allowButtonHold;
     private int _bulletsLeft, _bulletsShot;
 ```
+
+These variables control the variables such as bullet spread, range, reload and fire rate.
+
+Now we need to create some variaes for the refrences we could need for the script:
+
+```.cs
+    public Camera fpsCam;
+    public LayerMask whatIsEnemy;
+```
+
+These give us the camera that we can shoot the raycast from and the layer mask to identify if what we hit was an enemy or not.

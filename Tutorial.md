@@ -36,3 +36,10 @@ Now we need to create some variaes for the refrences we could need for the scrip
 ```
 
 These give us the camera that we can shoot the raycast from and the layer mask to identify if what we hit was an enemy or not.
+
+the last variables we need are private for the purposes of the script:
+
+```.cs
+    private RaycastHit _rayHit;
+    private bool _shooting, _readyToShoot, _reloading;
+```

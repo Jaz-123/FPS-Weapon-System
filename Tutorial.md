@@ -138,4 +138,35 @@ If we have given a value for more than 1 bullet to be shot with each click, we t
 
 ### Reset Shot Function
 
+```.cs
+    private void ResetShot()
+    {
+        _readyToShoot = true;
+    }
+```
 
+Here we just reset our shot by making `_readyToShoot` true again.
+
+### Reload Function
+
+```.cs
+    private void Reload()
+    {
+        _reloading = true;
+        Invoke(nameof(ReloadFinished), reloadTime);
+    }
+```
+
+In the `Reload()` function we set `_reloading` to true and call the `ReloadFinished()` function after the time of `reloadTime` has passed.
+
+### Reload Finished Function
+
+```.cs
+    private void ReloadFinished()
+    {
+        _bulletsLeft = magazineSize;
+        _reloading = false;
+    }
+```
+
+Here we reset or current ammo to the capactity of the magazine and then set our `_reloading` variable to false as the reload has finished.

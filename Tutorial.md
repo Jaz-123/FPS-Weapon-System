@@ -88,4 +88,8 @@ In the update function we are only calling the input function as all of the logi
     }
 ```
 
+In this function we are using an alternate if statement to check wether or not the player is holding down the shoot key and we store this as a bool `_shooting`.
 
+Next we check if the player presses the R key to reload, we call the `Reload()` function if the player presses the key and the current amount of bullets is less than the size of the magazine and is also not already reloading.
+
+The last statement checks if the player is allowed to shoot and if the `_shooting` variable is true as well as if we are not reloading and have bullets left in the magazine.

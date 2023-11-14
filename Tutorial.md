@@ -12,6 +12,8 @@ Now create a new layer and call it `Enemy`, this will act as the enemy layer so 
 
 Under your scripts folder create a new script and call it `GunSystem`.
 
+### Refrences
+
 In this script we need to create the variales to control the properties of the gun:
 
 ```.cs
@@ -37,9 +39,23 @@ Now we need to create some variaes for the refrences we could need for the scrip
 
 These give us the camera that we can shoot the raycast from and the layer mask to identify if what we hit was an enemy or not.
 
-the last variables we need are private for the purposes of the script:
+The last variables we need are private for the purposes of the script:
 
 ```.cs
     private RaycastHit _rayHit;
     private bool _shooting, _readyToShoot, _reloading;
 ```
+
+### Awake Function
+
+```.cs
+    private void Awake()
+    {
+        _bulletsLeft = magazineSize;
+        _readyToShoot = true;
+    }
+```
+
+In the awake function we need to set the amount of bullets that we currently have equal to the capacity of the magazine so we can start with the right amount of ammo.
+
+We also need to set our `_readyToShoot` variable to true so we can be able to shoot.
